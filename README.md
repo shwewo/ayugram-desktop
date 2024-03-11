@@ -1,4 +1,4 @@
-### Ayugram desktop flake
+### Ayugram desktop NixOS flake
 
 #### To install, add this to your flake:
 
