@@ -215,7 +215,7 @@ stdenv.mkDerivation rec {
 
   postFixup = lib.optionalString stdenv.isLinux ''
     sed -i 's/Exec=DESKTOPINTEGRATION=1 ayugram-desktop -- %u/Exec=ayugram-desktop -- %u/g' "$out/share/applications/com.ayugram.desktop.desktop"
-    sed -i 's/StartupWMClass=AyuGram/StartupWMClass=AyuGramDesktop/g" "$out/share/applications/com.ayugram.desktop.desktop"
+    sed -i 's/StartupWMClass=AyuGram/StartupWMClass=AyuGramDesktop/g' "$out/share/applications/com.ayugram.desktop.desktop"
     mv $out/share/applications/com.ayugram.desktop.desktop $out/share/applications/ayugram.desktop
     
     # This is necessary to run Telegram in a pure environment.
