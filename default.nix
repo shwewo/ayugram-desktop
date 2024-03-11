@@ -214,6 +214,7 @@ stdenv.mkDerivation rec {
   '';
 
   postFixup = lib.optionalString stdenv.isLinux ''
+    sed -i 's/Exec=DESKTOPINTEGRATION=1 ayugram-desktop -- %u/Exec=ayugram-desktop -- %u/g' "$out/share/applications/com.ayugram.desktop.desktop"
     # This is necessary to run Telegram in a pure environment.
     # We also use gappsWrapperArgs from wrapGAppsHook.
     wrapProgram $out/bin/${mainProgram} \
