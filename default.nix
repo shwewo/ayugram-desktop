@@ -199,7 +199,7 @@ stdenv.mkDerivation rec {
   ];
   CXXFLAGS = [ 
     # GCC 13: error: 'int64_t' in namespace 'std' does not name a type
-    "-include cstdint" 
+    "-include cstdint"
   ];
 
   preBuild = ''
@@ -215,8 +215,7 @@ stdenv.mkDerivation rec {
 
   postFixup = lib.optionalString stdenv.isLinux ''
     sed -i 's/Exec=DESKTOPINTEGRATION=1 ayugram-desktop -- %u/Exec=ayugram-desktop -- %u/g' "$out/share/applications/com.ayugram.desktop.desktop"
-    sed -i 's/StartupWMClass=AyuGram/StartupWMClass=AyuGramDesktop/g' "$out/share/applications/com.ayugram.desktop.desktop"
-    mv $out/share/applications/com.ayugram.desktop.desktop $out/share/applications/ayugram.desktop
+    sed -i 's/StartupWMClass=AyuGram/StartupWMClass=com.ayugram/g' "$out/share/applications/com.ayugram.desktop.desktop"
     
     # This is necessary to run Telegram in a pure environment.
     # We also use gappsWrapperArgs from wrapGAppsHook.
